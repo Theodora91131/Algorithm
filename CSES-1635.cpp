@@ -22,11 +22,10 @@ int main()
         {
             if (i - coin[j] >= 0)
             {
-                sum += dp[i - coin[j]];
+                dp[i] = (dp[i] + dp[i - coin[j]]) % MOD;
             }
         }
-        dp[i] = sum % MOD;
     }
-    // cout << dp[x] << endl;
+    cout << dp[x] << endl;
     return 0;
 }
