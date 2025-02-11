@@ -23,7 +23,7 @@ int main() {
 
     return 0;
 }
-///法二//
+///法二// 法一省時 法案好理解
 /**#include <iostream>
 
 using namespace std;
