@@ -1,0 +1,13 @@
+dfs: 
+void dfs(int index, 狀態資料...) {
+    if (達成目標) {
+        保存結果;
+        return;
+    }
+    for (int i = index; i < 候選項目.size(); ++i) {
+        if (條件不符) continue;
+        做選擇;
+        dfs(i 或 i+1, 更新狀態);
+        撤銷選擇;
+    }
+}
