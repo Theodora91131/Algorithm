@@ -27,10 +27,10 @@ void dfs(int startIdx, int currentSum) {
         int num = nums[i];
         if (currentSum + num > goal) continue; //超過總和就跳過
         if (used[num] >= countMap[num])continue; // 用超次數也跳過
-        path.push_back(num);
+        path.push_back(num); //選擇：把 num 加入 path
         used[num]++;
         dfs(i, currentSum + num);// i 不加一，因為可以重複選擇相同值（如果還有剩下）
-        used[num]--;
+        used[num]--; //回溯：結束後退一步，恢復狀態
         path.pop_back();
     }
 }
@@ -49,12 +49,12 @@ int main() {
 
         vector<int> raw(n);
         for (int i = 0; i < n;++i) {
-            ss >> raw[i];
-            countMap[raw[i]]++;
+            ss >> raw[i]; //保留原始輸入順序（但之後會排序）
+            countMap[raw[i]]++; //統計每個數字出現幾次，用來限制使用次數
         }
         nums = raw; // 移除重複的，保留排序後的數字列表
         sort(nums.begin(), nums.end(), greater<int>());
-        nums.erase(unique(nums.begin(), nums.end()), nums.end());
+        nums.erase(unique(nums.begin(), nums.end()), nums.end());  //注意 UNIQUE只會移除連續重複的職 而且也不適清掉 只是把它擺後面 ，然後回傳一個 iterator，指向第一個重複的元素的位置
 
         dfs(0, 0);
         cout << "Sums of " << goal << ":\n";
