@@ -11,3 +11,69 @@ void dfs(int index, 狀態資料...) {
         撤銷選擇;
     }
 }
+
+int gcd(int p, int q) {
+    if(q == 0){
+        return p;
+    } 
+    return gcd(q,p % q);
+}
+
+int lcm(int p, int q) {
+    return p / gcd(p,q)*q;
+}
+
+###########UVA 10699  最小質因數篩
+#include<bits/stdc++.h>
+
+const int MaxN = 1000005;
+int fact[MaxN];
+using namespace std;
+int main(){
+	int n, cnt ,p;
+	for(long long i =2; i<=MaxN;i++){
+		if(!fact[i]){
+			fact[i]=i;
+			for(long long j=i; j<=MaxN; j+=i){
+				if(!fact[j]){
+					fact[j]=i;
+				}
+			}
+		}
+	}
+	while(cin>>n && n){
+		int temp = n;
+		int cnt = 0;
+		while(temp != 1){
+			int p = fact[temp];
+			cnt++;
+			while(temp %p ==0){
+				temp /=p;
+			}
+		}
+		cout << n <<" : "<<cnt<<endl;
+	} 
+
+
+	return 0;
+}
+判斷是否質數:
+	void sieve(){
+
+	    for(int i=2;i<=n;i++){
+
+	        if(!factor[i]){
+
+	            prime.push_back(i);
+
+	            for(long long j=i; i*j<=n; j+=i){
+
+	                factor[j] = i; //紀錄當前數字i遇到的因數
+
+	            }
+
+	        }
+
+	    }
+
+	}
