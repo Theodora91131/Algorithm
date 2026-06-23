@@ -30,8 +30,8 @@ int main(){
             cout << n << endl;
         }else{
             int dead = upper_bound(totalStrengths.begin(),totalStrengths.end(),damage)-totalStrengths.begin(); //打死了幾個人
-            cout << n - dead << endl;
-        }
+            cout << n - dead << endl; //活者的人數=總人數-死的人數
+        }//it - totalStrengths.begin() 是因為upper_bound()回傳的是一個iterator，減去begin()才會得到index位置
     }//upper_bound()二分搜尋法，找出第一個大於damage的元素位置，這個位置就是打死的人數
 
 }
